@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 
-const TodoItem = () => {
+const TodoItem = ({value}) => {
 
     const [hovered, setHovered] = useState(false);
+
+    function deleteHandler() {
+        // Add logic ro remove list item from DOM
+    }
     
     return (
         <>
@@ -11,8 +15,8 @@ const TodoItem = () => {
                 onMouseEnter={() => setHovered(true)}
                 onMouseLeave={() => setHovered(false)}
             >
-                <span>Vestibulum at eros</span>
-                <span className="text-danger">{hovered ? 'X' : ''}</span>
+                <span>{value}</span>
+                <span className="text-danger" onClick={deleteHandler}>{hovered ? 'X' : ''}</span>
             </li>
         </>
     );
