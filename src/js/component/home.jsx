@@ -22,7 +22,11 @@ const Home = () => {
 			<div className="card">
 				<ul className="list-group list-group-flush">
 					<TodoInput todoList={todoList} setTodoList={setTodoList} listKey={listKey} setListKey={setListKey} />
-					{todoList.map((item) => <TodoItem key={item.id} value={item.value} />)}
+					{
+						todoList.length > 0 ? 
+						todoList.map((item) => <TodoItem key={item.id} value={item.value} />) :
+						<TodoItem key={-1} value="No tasks, add a task" />
+					}
   				</ul>
 			</div>
 		</div>
