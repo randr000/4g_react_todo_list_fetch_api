@@ -19,15 +19,15 @@ const TodoInput = ({todoList, setTodoList, listKey, setListKey}) => {
     }
     
     return (
-        <>
-            <input
-                className="list-group-item fs-3"
-                type="text"
-                onChange={e => setIntputValue(e.target.value)}
-                onKeyPress={enterKeyHandler}
-                value={inputValue}
-            />
-        </>
+
+        <input
+            className="list-group-item fs-3"
+            type="text"
+            onChange={e => setIntputValue(e.target.value)}
+            onKeyPress={enterKeyHandler}
+            value={inputValue}
+        />
+
     );
 };
 
