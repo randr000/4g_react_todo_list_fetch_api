@@ -17,7 +17,7 @@ const TodoItem = ({todoList, setTodoList, itemID, value, setListKey}) => {
         <>
             <li 
                 className="list-group-item d-flex justify-content-between fs-3"
-                onMouseEnter={() => todoList.length ? setHovered(true) : null}
+                onMouseOver={() => todoList.length ? setHovered(true) : null}
                 onMouseLeave={() => setHovered(false)}
             >
                 <span>{value}</span>
