@@ -13,7 +13,7 @@ const Home = () => {
 	return (
 		<div className="container-fluid mx-auto w-50">
 			<h1 className="display-1 text-center">todos</h1>
-			<div className="card">
+			<div className="card rounded-0">
 				<ul className="list-group list-group-flush">
 					<TodoInput todoList={todoList} setTodoList={setTodoList} listKey={listKey} setListKey={setListKey} />
 					{
@@ -21,8 +21,12 @@ const Home = () => {
 						todoList.map((item) => <TodoItem key={item.id} itemID={item.id} todoList={todoList} setTodoList={setTodoList} value={item.value} />) :
 						<TodoItem key={-1} itemID={-1} todoList={todoList} setTodoList={setTodoList} value="No tasks, add a task" setListKey={setListKey} />
 					}
+					
   				</ul>
+				  
 			</div>
+			<div className="card rounded-0" style={{height: '10px', marginRight: '5px', marginLeft: '5px'}}></div>
+			<div className="card rounded-0" style={{height: '10px', marginRight: '10px', marginLeft: '10px'}}></div>
 		</div>
 	);
 };
