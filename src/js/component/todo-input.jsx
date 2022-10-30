@@ -21,7 +21,7 @@ const TodoInput = ({todoList, setTodoList, listKey, setListKey}) => {
     return (
 
         <input
-            className="list-group-item fs-3"
+            className="list-group-item fs-3 text-black-50"
             type="text"
             onChange={e => setIntputValue(e.target.value)}
             onKeyPress={enterKeyHandler}
