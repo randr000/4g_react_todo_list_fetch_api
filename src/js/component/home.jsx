@@ -12,7 +12,7 @@ const Home = () => {
 
 	return (
 		<div className="container-fluid mx-auto w-50">
-			<h1 className="display-1 text-center">todos</h1>
+			<h1 className="display-1 text-center" style={{color: '#C19A6B'}}>todos</h1>
 			<div className="card rounded-0">
 				<ul className="list-group list-group-flush">
 					<TodoInput todoList={todoList} setTodoList={setTodoList} listKey={listKey} setListKey={setListKey} />

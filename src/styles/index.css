@@ -10,3 +10,7 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+
+body {
+    background-image: url('https://www.zingerbugimages.com/backgrounds/white_construction_paper_seamless.jpg');
+}
