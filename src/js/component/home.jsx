@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import TodoItem from './todo-item.jsx';
 import TodoInput from './todo-input.jsx';
 import ListFooter from './list-footer.jsx';
+import StackedCardsEffect from './stacked-cards-effect.jsx';
+import AppContext from './AppContext.jsx';
 
 //create your first component
 const Home = () => {
@@ -24,10 +26,8 @@ const Home = () => {
 					}
 					{todoList.length ? <ListFooter itemsLeft={todoList.length} /> : null}
   				</ul>
-				  
 			</div>
-			<div className="card rounded-0" style={{height: '10px', marginRight: '5px', marginLeft: '5px'}}></div>
-			<div className="card rounded-0" style={{height: '10px', marginRight: '10px', marginLeft: '10px'}}></div>
+			<StackedCardsEffect cardHeight={8} marginX={5} />
 		</div>
 	);
 };
