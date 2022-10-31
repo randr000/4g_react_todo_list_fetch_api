@@ -7,11 +7,11 @@ export const ContextWrapper = ({children}) => {
     const [store, setStore] = useState([]);
 
     const [actions, setActions] = useState({
-        addTask: todo => setStore([...store, todo]);
+        addTask: todo => setStore([...store, todo])
     });
 
     return (
-        <AppContext.Provider>
+        <AppContext.Provider value={{store, actions}}>
             {children}
         </AppContext.Provider>
     );
