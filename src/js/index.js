@@ -8,5 +8,15 @@ import "../styles/index.css";
 //import your own components
 import Home from "./component/home.jsx";
 
-//render your react application
-ReactDOM.render(<Home />, document.querySelector("#app"));
+// ReactDOM.render(<Home />, document.querySelector("#app"));
+
+import { ContextWrapper } from "./component/AppContext.jsx";
+const MyView = () => {
+    return (
+        <ContextWrapper>
+            <Home />
+        </ContextWrapper>
+    );
+};
+
+ReactDOM.render(<MyView />, document.querySelector("#app"));
