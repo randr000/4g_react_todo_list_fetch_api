@@ -29,7 +29,7 @@ const Home = () => {
 								todoList.map((item) => <TodoItem key={item.id} itemID={item.id} todoList={todoList} setTodoList={setTodoList} value={item.value} />) :
 								<TodoItem key={-1} itemID={-1} todoList={todoList} setTodoList={setTodoList} value="No tasks, add a task" setListKey={setListKey} />
 							}
-							{todoList.length ? <ListFooter itemsLeft={todoList.length} /> : null}
+							{store.listLen ? <ListFooter /> : null}
 									</ul>
 					</div>
 
