@@ -1,23 +1,29 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { AppContext } from './AppContext.jsx';
 
-const TodoItem = ({todoList, setTodoList, itemID, value, setListKey}) => {
+const TodoItem = ({value, itemID}) => {
+
+    const {store, actions} = useContext(AppContext);
+    const {removeTodo, updateListLen} = actions;
+    const todoList = store.todos;
+    const listLen = store.itemID;
 
     const [hovered, setHovered] = useState(false);
 
     function deleteHandler(id) {
-        setTodoList(todoList.filter(item => item.id !== id));
+        removeTodo(id);
     }
 
     // Resets listKey to 0 if all items deleted
-    useEffect(() => {
-        if (!todoList.length) setListKey(0);
-    });
+    // useEffect(() => {
+    //     if (!listLen) updateListLen(0);
+    // });
     
     return (
         <>
             <li 
                 className="list-group-item d-flex justify-content-between fs-3 text-black-50"
-                onMouseOver={() => todoList.length ? setHovered(true) : null}
+                onMouseOver={() => listLen ? setHovered(true) : null}
                 onMouseLeave={() => setHovered(false)}
             >
                 <span>{value}</span>
