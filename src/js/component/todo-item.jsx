@@ -1,33 +1,26 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { AppContext } from './AppContext.jsx';
 
-const TodoItem = ({value, itemID}) => {
+const TodoItem = ({value, itemID, hoverDelete}) => {
 
-    const {store, actions} = useContext(AppContext);
-    const {removeTodo, updateListLen} = actions;
-    const todoList = store.todos;
-    const listLen = store.itemID;
+    const {store, dispatch} = useContext(AppContext);
 
     const [hovered, setHovered] = useState(false);
 
-    function deleteHandler(id) {
-        removeTodo(id);
-    }
-
-    // Resets listKey to 0 if all items deleted
-    // useEffect(() => {
-    //     if (!listLen) updateListLen(0);
-    // });
+    // Resets prevID to 0 if all items deleted
+    useEffect(() => {
+        if (!store.todos.length) dispatch({type: 'resetPrevID'});
+    }, [store.todos]);
     
     return (
         <>
             <li 
                 className="list-group-item d-flex justify-content-between fs-3 text-black-50"
-                onMouseOver={() => listLen ? setHovered(true) : null}
+                onMouseOver={() => hoverDelete ? setHovered(true) : null}
                 onMouseLeave={() => setHovered(false)}
             >
                 <span>{value}</span>
-                <span className="text-danger" onClick={() => deleteHandler(itemID)}>{hovered ? 'X' : ''}</span>
+                <span className="text-danger" onClick={() => dispatch({type: 'removeTodo', payload: itemID})}>{hovered ? 'X' : ''}</span>
             </li>
         </>
     );

@@ -5,15 +5,14 @@ import TodoItem from './todo-item.jsx';
 const TodoItems = () => {
 
     const {store} = useContext(AppContext);
-    const {itemID, todos} = store;
-    console.log(store)
+    const {todos} = store;
 
     return (
         <>
             {
-                itemID ?
-                todos.map(todo => <TodoItem key={todo.id} value={todo.value} itemID={todo.id} />) :
-                <TodoItem key={-1} value='No tasks, add a task' />
+                todos.length ?
+                todos.map(todo => <TodoItem key={todo.id} value={todo.value} itemID={todo.id} hoverDelete={true} />) :
+                <TodoItem key={-1} value='No tasks, add a task' hoverDelete={false} />
             }
         </>
     );

@@ -4,10 +4,10 @@ import { AppContext } from './AppContext.jsx';
 const ListFooter = () => {
 
     const {store} = useContext(AppContext);
-    const itemsLeft = store.listLen;
+    const itemsLeft = store.todos.length;
 
     return (
-        <span className="list-group-item fs-5 text-muted">{`${itemsLeft} item${itemsLeft > 0 ? 's' : ''} left`}</span>
+        <span className="list-group-item fs-5 text-muted">{`${itemsLeft} item${itemsLeft > 1 ? 's' : ''} left`}</span>
     );
 };
 
