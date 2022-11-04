@@ -4,7 +4,7 @@ export const AppContext = React.createContext(null);
 
 export const ContextWrapper = ({children}) => {
 
-    const [store, dispatch] = useReducer(reducer, {prevID: 0, todos: []});
+    const [store, dispatch] = useReducer(reducer, {username: '', prevID: 0, todos: []});
 
     function reducer(state, action) {
         switch(action.type) {
@@ -14,6 +14,8 @@ export const ContextWrapper = ({children}) => {
                 return {...state, todos: state.todos.filter(todo => todo.id !== action.payload)};
             case 'resetPrevID':
                 return {...state, prevID: 0};
+            case 'changeUsername':
+                return {...state, username: action.payload};
             default:
                 throw new Error();
         }
