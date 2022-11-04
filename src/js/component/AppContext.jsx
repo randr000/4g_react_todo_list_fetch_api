@@ -4,7 +4,14 @@ export const AppContext = React.createContext(null);
 
 export const ContextWrapper = ({children}) => {
 
-    const [store, dispatch] = useReducer(reducer, {username: '', prevID: 0, todos: []});
+    const [store, dispatch] = useReducer(reducer, 
+        {
+            username: '',
+            showModal: true,
+            prevID: 0,
+            todos: []
+    
+        });
 
     function reducer(state, action) {
         switch(action.type) {
