@@ -23,10 +23,8 @@ export const ContextWrapper = ({children}) => {
                 return {...state, prevID: 0};
             case 'changeUsername':
                 return {...state, username: action.payload};
-            case 'displayModal':
-                return {...state, showModal: true};
-            case 'removeModal':
-                return {...state, showModal: false};
+            case 'showModal':
+                return {...state, showModal: action.payload};
             default:
                 throw new Error();
         }

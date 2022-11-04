@@ -6,7 +6,7 @@ const NewUserModal = () => {
     const {dispatch} = useContext(AppContext);
 
     function removeModal() {
-        dispatch({type: 'removeModal'});
+        dispatch({type: 'showModal', payload: false});
     }
 
     return (
