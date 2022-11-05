@@ -22,7 +22,21 @@ export async function fetchTodos(username) {
 }
 
 export async function createUser(username) {
-    return;
+    
+    try {
+        const requestOptions = {
+            method: 'POST',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify([])
+        };
+
+        const res = await fetch(`${apiEndpoint}${username}`, requestOptions);
+        
+        if (res.ok) console.log(`User ${username} created successfully`);
+
+    } catch(err) {
+        throw new Error('Something went wrong adding a new user');
+    }
 }
 
 export async function updateTodos(username, todoList) {

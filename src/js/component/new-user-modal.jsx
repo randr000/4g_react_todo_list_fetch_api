@@ -1,19 +1,17 @@
 import React, { useContext } from 'react';
+import { createUser } from '../async-functions.js';
 import { AppContext } from './AppContext.jsx';
 
 const NewUserModal = () => {
 
     const {store, dispatch} = useContext(AppContext);
+    const {username} = store;
 
     function addUserToggleModal(addUser) {
         dispatch({type: 'showModal', payload: false});
-        // Do something with addUserToggleModal boolean value here
-        //  to add user to api list or not. Reset state if false.
-        if (addUser) {
-            return;
-        } else {
-            dispatch({type: 'changeUsername', payload: ''});
-        }
+        
+        if (addUser) createUser(username);
+        else dispatch({type: 'changeUsername', payload: ''});
     }
 
     return (
@@ -26,7 +24,7 @@ const NewUserModal = () => {
                         <button type="button" onClick={e => addUserToggleModal(false)} className="btn-close"></button>
                     </div>
                     <div className="modal-body">
-                        <p>{`A todo list for user "${store.username}" does not exist. Would you like to create one?`}</p>
+                        <p>{`A todo list for user "${username}" does not exist. Would you like to create one?`}</p>
                     </div>
                     <div className="modal-footer">
                         <button onClick={e => addUserToggleModal(true)} className="btn btn-success">Yes</button>
