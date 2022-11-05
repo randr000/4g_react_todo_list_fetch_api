@@ -7,7 +7,7 @@ export const ContextWrapper = ({children}) => {
     const [store, dispatch] = useReducer(reducer, 
         {
             username: '',
-            showModal: true,
+            showModal: false,
             prevID: 0,
             todos: []
     

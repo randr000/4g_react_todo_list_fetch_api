@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AppContext } from './AppContext.jsx';
+import apiEndpoint from '../api-endpoint.js';
+import { doesUserExist, fetchTodos } from '../async-functions.js';
+import { resolvePath } from 'react-router';
 
 const UsernameInput = () => {
 
@@ -9,7 +12,17 @@ const UsernameInput = () => {
     useEffect(() => {
 
         // Will update username global state one second after last change
-        const timeOutId = setTimeout(() => dispatch({type: 'changeUsername', payload: username}), 1000);
+        const timeOutId = setTimeout(() => {
+            dispatch({type: 'changeUsername', payload: username});
+        
+            // Check if username exists
+            if (username) {
+                
+                doesUserExist(username).then(res => dispatch({type: 'showModal', payload: !res}));
+                
+            }
+
+        }, 1000);
         
         return () => clearTimeout(timeOutId);
 
