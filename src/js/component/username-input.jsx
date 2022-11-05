@@ -6,20 +6,18 @@ import { resolvePath } from 'react-router';
 
 const UsernameInput = () => {
 
-    const [username, setUsername] = useState('');
-    const {dispatch} = useContext(AppContext);
+    const {store, dispatch} = useContext(AppContext);
+    const { username } = store;
 
     useEffect(() => {
 
         // Will update username global state one second after last change
         const timeOutId = setTimeout(() => {
-            dispatch({type: 'changeUsername', payload: username});
+            dispatch({type: 'updatePageHeaderUsername', payload: username});
         
             // Check if username exists
             if (username) {
-                
                 doesUserExist(username).then(res => dispatch({type: 'showModal', payload: !res}));
-                
             }
 
         }, 1000);
@@ -35,7 +33,8 @@ const UsernameInput = () => {
                 type="text" 
                 id="username"
                 className="form-control fs-3 text-black-50 ms-2 me-5"
-                onChange={e => setUsername(e.target.value)}
+                onChange={e => dispatch({type: 'changeUsername', payload: e.target.value})}
+                value={username}
             />
         </div>
     );

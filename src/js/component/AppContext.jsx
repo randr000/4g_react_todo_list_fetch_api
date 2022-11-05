@@ -7,6 +7,7 @@ export const ContextWrapper = ({children}) => {
     const [store, dispatch] = useReducer(reducer, 
         {
             username: '',
+            phUsername: '',
             showModal: false,
             prevID: 0,
             todos: []
@@ -23,6 +24,8 @@ export const ContextWrapper = ({children}) => {
                 return {...state, prevID: 0};
             case 'changeUsername':
                 return {...state, username: action.payload};
+            case 'updatePageHeaderUsername':
+                return {...state, phUsername: action.payload ? `${action.payload}'${action.payload.charAt(action.payload.length - 1) === 's' ? '' : 's'}` : ''}
             case 'showModal':
                 return {...state, showModal: action.payload};
             default:

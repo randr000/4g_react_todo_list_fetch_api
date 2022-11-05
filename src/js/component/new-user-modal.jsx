@@ -11,6 +11,8 @@ const NewUserModal = () => {
         //  to add user to api list or not. Reset state if false.
         if (addUser) {
             return;
+        } else {
+            dispatch({type: 'changeUsername', payload: ''});
         }
     }
 
