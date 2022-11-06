@@ -21,8 +21,8 @@ const Home = () => {
 
         // Update todo list for current user on the server when new item added or item removed
 		if (store.username) {
-
-			if (store.length) updateTodos(store.username, store.todos);
+			
+			if (store.todos.length) updateTodos(store.username, store.todos);
 			// Sending an empty todo list to server causes errors so we send this sample todo
 			else updateTodos(store.username, [{label: 'sample task', done: false}]);
 		}

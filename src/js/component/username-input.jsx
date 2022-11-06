@@ -1,8 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { AppContext } from './AppContext.jsx';
-import apiEndpoint from '../api-endpoint.js';
 import { doesUserExist, fetchTodos } from '../async-functions.js';
-import { resolvePath } from 'react-router';
 
 const UsernameInput = () => {
 
