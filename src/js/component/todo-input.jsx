@@ -5,7 +5,7 @@ const TodoInput = () => {
 
     const [inputValue, setIntputValue] = useState('');
 
-    const {store, dispatch} = useContext(AppContext);
+    const {dispatch} = useContext(AppContext);
 
     function enterKeyHandler(event) {
         if (inputValue && event.key === 'Enter') {

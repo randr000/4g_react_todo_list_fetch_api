@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { updateTodos } from '../async-functions.js';
 
 // import components
@@ -10,6 +10,7 @@ import StackedCardsEffect from './stacked-cards-effect.jsx';
 import UsernameInput from "./username-input.jsx";
 import PageHeader from "./page-header.jsx";
 import NewUserModal from "./new-user-modal.jsx";
+import DeleteUserModal from "./delete-user-modal.jsx";
 import ActionButtons from "./action-buttons.jsx";
 
 //create your first component
@@ -31,7 +32,8 @@ const Home = () => {
 	
 	return (
 		<>
-		{store.showModal ? <NewUserModal /> : null}
+		{store.showNewUserModal ? <NewUserModal /> : null}
+		{store.showDeleteUserModal ? <DeleteUserModal /> : null}
 		<div className="container-fluid mx-auto w-50">
 			<PageHeader />
 			<UsernameInput />

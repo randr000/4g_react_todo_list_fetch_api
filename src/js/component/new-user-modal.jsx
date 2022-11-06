@@ -8,10 +8,10 @@ const NewUserModal = () => {
     const {username} = store;
 
     function addUserToggleModal(addUser) {
-        dispatch({type: 'showModal', payload: false});
+        dispatch({type: 'showNewUserModal', payload: false});
         
         if (addUser) createUser(username);
-        else dispatch({type: 'resetState', payload: ''});
+        else dispatch({type: 'resetState'});
     }
 
     return (

@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 
 export const AppContext = React.createContext(null);
 
@@ -7,7 +7,8 @@ export const ContextWrapper = ({children}) => {
     const defaultState = {
         username: '',
         phUsername: '',
-        showModal: false,
+        showNewUserModal: false,
+        showDeleteUserModal: false,
         prevID: 0,
         todos: []
     }
@@ -32,8 +33,10 @@ export const ContextWrapper = ({children}) => {
                 return defaultState;
             case 'updatePageHeaderUsername':
                 return {...state, phUsername: action.payload ? `${action.payload}'${action.payload.charAt(action.payload.length - 1) === 's' ? '' : 's'}` : ''}
-            case 'showModal':
-                return {...state, showModal: action.payload};
+            case 'showNewUserModal':
+                return {...state, showNewUserModal: action.payload};
+            case 'showDeleteUserModal':
+                return {...state, showDeleteUserModal: action.payload};
             default:
                 throw new Error();
         }

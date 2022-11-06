@@ -23,7 +23,7 @@ const UsernameInput = () => {
                         dispatch({type: 'downloadTodoList', payload: data}) : 
                         dispatch({type: 'noTodos'}));
 
-                    else dispatch({type: 'showModal', payload: !res});
+                    else dispatch({type: 'showNewUserModal', payload: !res});
                 });
                 
             }
