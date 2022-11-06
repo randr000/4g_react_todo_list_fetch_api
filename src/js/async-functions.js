@@ -16,8 +16,9 @@ export async function doesUserExist(username) {
 export async function fetchTodos(username) {
     const res = await fetch(`${apiEndpoint}${username}`)
     const data = await res.json();
-    console.log(data);
-    return;
+    
+    if (data.length === 1 && Object.keys(data[0]).length === 2) return false;
+    return data;
 }
 
 export async function createUser(username) {
@@ -47,10 +48,7 @@ export async function updateTodos(username, todoList) {
             body: JSON.stringify(todoList)
         }
 
-        // console.log(JSON.stringify(todoList));
-
         const res = await fetch(`${apiEndpoint}${username}`, requestOptions);
-        // console.log(res)
 
         if (res.ok) console.log(`Todo list for user ${username} updated successfully`);
 
