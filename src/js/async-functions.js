@@ -15,7 +15,6 @@ export async function doesUserExist(username) {
 
 export async function fetchTodos(username) {
     const res = await fetch(`${apiEndpoint}${username}`)
-    // console.log(res);
     const data = await res.json();
     console.log(data);
     return;
@@ -40,7 +39,24 @@ export async function createUser(username) {
 }
 
 export async function updateTodos(username, todoList) {
-    return;
+    
+    try {
+        const requestOptions = {
+            method: 'PUT',
+            headers: {'Content-Type' : 'application/json'},
+            body: JSON.stringify(todoList)
+        }
+
+        // console.log(JSON.stringify(todoList));
+
+        const res = await fetch(`${apiEndpoint}${username}`, requestOptions);
+        // console.log(res)
+
+        if (res.ok) console.log(`Todo list for user ${username} updated successfully`);
+
+    } catch (err) {
+        throw new Error('Something went wrong updating the user\'s todo list');
+    }
 }
 
 export async function deleteUser(username) {

@@ -17,7 +17,7 @@ export const ContextWrapper = ({children}) => {
     function reducer(state, action) {
         switch(action.type) {
             case 'addTodo':
-                return {...state, prevID: state.prevID + 1, todos: [...state.todos, {id: state.prevID + 1, value: action.payload}]};
+                return {...state, prevID: state.prevID + 1, todos: [...state.todos, {done: false, id: state.prevID + 1, label: action.payload}]};
             case 'removeTodo':
                 return {...state, todos: state.todos.filter(todo => todo.id !== action.payload)};
             case 'resetPrevID':

@@ -18,6 +18,7 @@ const UsernameInput = () => {
             // Check if username exists
             if (username) {
                 doesUserExist(username).then(res => dispatch({type: 'showModal', payload: !res}));
+                // Add logic here to get user's todo list
             }
 
         }, 1000);

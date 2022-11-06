@@ -11,7 +11,7 @@ const TodoItems = () => {
         <>
             {
                 todos.length ?
-                todos.map(todo => <TodoItem key={todo.id} value={todo.value} itemID={todo.id} hoverDelete={true} />) :
+                todos.map(todo => <TodoItem key={todo.id} value={todo.label} itemID={todo.id} hoverDelete={true} />) :
                 <TodoItem key={-1} value='No tasks, add a task' hoverDelete={false} />
             }
         </>
