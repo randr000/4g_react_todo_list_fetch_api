@@ -1,19 +1,11 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { AppContext } from './AppContext.jsx';
-import { updateTodos } from '../async-functions.js';
 
 const TodoInput = () => {
 
     const [inputValue, setIntputValue] = useState('');
 
     const {store, dispatch} = useContext(AppContext);
-
-    useEffect(() => {
-
-        // Update todo list for current user on the server
-        if (store.todos.length) updateTodos(store.username, store.todos);
-
-    }, [store.todos]);
 
     function enterKeyHandler(event) {
         if (inputValue && event.key === 'Enter') {

@@ -11,7 +11,7 @@ const NewUserModal = () => {
         dispatch({type: 'showModal', payload: false});
         
         if (addUser) createUser(username);
-        else dispatch({type: 'changeUsername', payload: ''});
+        else dispatch({type: 'resetState', payload: ''});
     }
 
     return (

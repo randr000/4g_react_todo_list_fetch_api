@@ -15,10 +15,19 @@ const UsernameInput = () => {
         const timeOutId = setTimeout(() => {
             dispatch({type: 'updatePageHeaderUsername', payload: username});
         
-            // Check if username exists
+            // Check if username exists and fetch their todos if they do
             if (username) {
-                doesUserExist(username).then(res => dispatch({type: 'showModal', payload: !res}));
-                // Add logic here to get user's todo list
+
+                doesUserExist(username).then(res => {
+                    if (res) fetchTodos(username).then(
+                        data => 
+                        data ? 
+                        dispatch({type: 'downloadTodoList', payload: data}) : 
+                        dispatch({type: 'noTodos'}));
+
+                    else dispatch({type: 'showModal', payload: !res});
+                });
+                
             }
 
         }, 1000);
