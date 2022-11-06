@@ -1,5 +1,6 @@
 import apiEndpoint from "./api-endpoint.js";
 
+// Checks if a user exists on the server
 export async function doesUserExist(username) {
 
     try {
@@ -13,6 +14,7 @@ export async function doesUserExist(username) {
     }
 }
 
+// Fetches the user's todo list from the server
 export async function fetchTodos(username) {
     const res = await fetch(`${apiEndpoint}${username}`)
     const data = await res.json();
@@ -21,6 +23,7 @@ export async function fetchTodos(username) {
     return data;
 }
 
+// Creates a new user on the server
 export async function createUser(username) {
     
     try {
@@ -39,6 +42,7 @@ export async function createUser(username) {
     }
 }
 
+// Updates a user's todo list on the server
 export async function updateTodos(username, todoList) {
     
     try {
@@ -57,6 +61,20 @@ export async function updateTodos(username, todoList) {
     }
 }
 
+// Deletes a user from the server
 export async function deleteUser(username) {
-    return;
+    
+    try {
+        const requestOptions = {
+            method: 'DELETE',
+            headers: {'Content-Type' : 'application/json'},
+        }
+
+        const res = await fetch(`${apiEndpoint}${username}`, requestOptions);
+
+        if (res.ok) console.log(`User ${username} has been deleted successfully`);
+
+    } catch (err) {
+        throw new Error('Something went wrong when deleting the user');
+    }
 }
